@@ -1,5 +1,14 @@
 # APLICANDO PATRÓN SINGLETON
 
+```Lo que se verá a continuación se encuentra dentro de una clase llamada gestionInventario```
+
+```javascript
+    class gestionInventario {
+
+    }
+```
+
+
 **Creación de interfaz de producto**
 
 ```Se crea una interfaz con sus propiedades definidas en tipo string```
@@ -54,7 +63,7 @@
 ```Este método es público, por lo tanto puede ser usado desde fuera de la clase```
 
 ```javascript
-public agregarEquipo(equipo: string, marca: string, estado: string): void {
+    public agregarEquipo(equipo: string, marca: string, estado: string): void {
         this.inventario.push({ equipo, marca, estado }) ;
     }
 ```
@@ -66,17 +75,19 @@ public agregarEquipo(equipo: string, marca: string, estado: string): void {
 ```Este método es público, por lo tanto puede ser usado desde fuera de la clase```
 
 ```javascript
-public obtenerEstadoEquipo(): objProducto[] {
+    public obtenerEstadoEquipo(): objProducto[] {
         return this.inventario;
     }
 ```
+
+```Lo siguiente no se encuentra dentro de la clase```
 
 **Creación de nuevo objeto**
 
 ```Se extrae de la clase gestionInventario la instancia a esta misma clase para crear un nuevo objeto```
 
 ```javascript
-const nuevoEquipo = gestionInventario.obtenerInstancia();
+    const nuevoEquipo = gestionInventario.obtenerInstancia();
 ```
 
 **Creación de nuevo equipo**
@@ -84,7 +95,7 @@ const nuevoEquipo = gestionInventario.obtenerInstancia();
 ```Desde el nuevo objeto se hace uso del método agregarEquipo y se le pasan tres valores por parámetro```
 
 ```javascript
-nuevoEquipo.agregarEquipo("Notebook", "Asus", "Disponible");
+    nuevoEquipo.agregarEquipo("Notebook", "Asus", "Disponible");
 ```
 
 **Mostrar valores del arreglo inventario**
@@ -94,5 +105,5 @@ nuevoEquipo.agregarEquipo("Notebook", "Asus", "Disponible");
 ```A través de un console.lo() se muestra el resultado por consola```
 
 ```javascript
-console.log(nuevoEquipo.obtenerEstadoEquipo())
+    console.log(nuevoEquipo.obtenerEstadoEquipo())
 ```
