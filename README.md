@@ -4,19 +4,19 @@
 
   ```git clone https://github.com/Daviid0000/Patrones-de-disenio.git```
 
-- Posicionece dentro de la carpeta correspondiente al código que desea ejecutar
+- Posisionece dentro de la carpeta correspondiente al código que desea ejecutar
 
   ```cd <nombre-de-carpeta>```
   
-- Instalar las siguientes dependencias para la compilación y ejecución del código
+- Instale las siguientes dependencias para la compilación y ejecución del código
   
   ```npm i -D typescript nodemon```
 
-- Compilar código de typescript a javascript
+- Compile el código de typescript a javascript
   
   ```npm run tsc```
 
-- Ejecutar código javascript
+- Ejecute el código javascript
   
   ```npm run dev```
 
