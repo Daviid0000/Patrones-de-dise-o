@@ -76,7 +76,7 @@
 
 **Tests**
 
-```A continuación se crea una instancia de la clase EquipoFactory la cual  posee el método para crear el equipo dependiendo del tipo de equipo que sea```
+```A continuación se crea una instancia de la clase EquipoFactory la cual posee el método para crear equipos dependiendo del tipo que sean```
 
 
 ```javascript
