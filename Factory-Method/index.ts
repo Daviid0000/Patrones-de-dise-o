@@ -1,64 +1,63 @@
-interface ICoche {
-    marca: string;
-    color: string;
-    precio: number;
-    conducir(): string;
+interface IEquipo {
+    Tipo: string;
+    Nombre: string;
+    RAM: string;
+    Procesador: string;
+    detalles(): string;
 }
 
-class Toyota implements ICoche {
-    marca: string;
-    color: string;
-    precio: number
-    
-    constructor(marca: string, color: string, precio: number) {
-        this.marca = marca
-        this.color = color
-        this.precio = precio
+class ModeloEquipo implements IEquipo {
+    Tipo: string
+    Nombre: string
+    RAM: string 
+    Procesador: string
+
+    constructor(Tipo: string, Nombre: string, RAM: string, Procesador: string) {
+        this.Tipo = Tipo;
+        this.Nombre = Nombre;
+        this.RAM = RAM;
+        this.Procesador = Procesador;
     }
-    conducir(): string {
-        return `El coche ${this.marca} está avanzando...`
-    };
-}
 
-class CeroKm implements ICoche {
-    marca: string;
-    color: string;
-    precio: number
-    
-    constructor(marca: string, color: string, precio: number) {
-        this.marca = marca
-        this.color = color
-        this.precio = precio
-    }
-    conducir(): string {
-        return `El coche ${this.marca} está avanzando...`
-    };
-}
-
-abstract class fabricaCoche {
-    abstract crearCoche(marca: string, color: string, precio: number, conducir: string): ICoche 
-}
-
-class FabricaToyota extends fabricaCoche {
-    crearCoche(marca: string, color: string, precio: number): ICoche {
-        return new Toyota(marca, color, precio)
+    detalles(): string {
+        return `Tipo: ${this.Tipo}, Nombre: ${this.Nombre}, RAM: ${this.RAM}, Procesador: ${this.Procesador}`
     }
 }
 
-class FabricaCeroKm extends fabricaCoche {
-    crearCoche(marca: string, color: string, precio: number): ICoche {
-        return new CeroKm(marca, color, precio)
+class EquipoFactory {
+    crearEquipo(Tipo: string, Nombre: string, RAM: string, Procesador: string): IEquipo {
+        if (Tipo === "Notebook") {
+            return new FabricaNotebook(Nombre, RAM, Procesador);
+        } else if (Tipo === "Desktop") {
+            return new FabricaDesktop(Nombre, RAM, Procesador);
+        } else if(Tipo === "Servidor") {
+            return new FabricaServidor(Nombre, RAM, Procesador);
+        } else {
+            throw new Error("Tipo de equipo no válido");
+        }
     }
 }
 
-const main = () => {
-    const creadorCoche1 = new FabricaToyota();
-    const coche1 = creadorCoche1.crearCoche("Toyota", "Verde", 1999)
-    console.log(coche1.conducir())
-
-    const creadorCoche2 = new FabricaCeroKm();
-    const coche2 = creadorCoche2.crearCoche("CeroKm", "Azul", 2000)
-    console.log(coche2.conducir())
+class FabricaNotebook extends ModeloEquipo {
+    constructor(Nombre: string, RAM: string, Procesador: string) {
+        super("Notebook", Nombre, RAM, Procesador);
+    }
 }
 
-main()
+class FabricaDesktop extends ModeloEquipo {
+    constructor(Nombre: string, RAM: string, Procesador: string) {
+        super("Desktop", Nombre, RAM, Procesador);
+    }
+}
+
+class FabricaServidor extends ModeloEquipo {
+    constructor(Nombre: string, RAM: string, Procesador: string) {
+        super("Servidor", Nombre, RAM, Procesador)
+    }
+}
+
+const fabrica = new EquipoFactory();
+const equipo1 = fabrica.crearEquipo("Notebook", "Laptop", "4GB", "i3");
+const equipo2 = fabrica.crearEquipo("Desktop", "PC", "16GB", "i7");
+console.log(equipo1.detalles());
+console.log(equipo2.detalles());
